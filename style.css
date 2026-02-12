@@ -73,7 +73,28 @@ button:active { transform: scale(0.92); }
 #scoreText { margin-top: clamp(5px,1.5vw,12px); font-weight:bold; font-size: clamp(14px,2vw,18px); }
 
 /* Valentine Buttons */
-.buttons { position:relative; height: clamp(80px,15vh,120px); }
+/* Valentine Buttons */* Valentine Buttons */
+.buttons {
+  position: relative;
+  height: clamp(80px,15vh,120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* THIS adds space between buttons */
+}
+.buttons button {
+  margin: 5px;
+}
+
+.buttons {
+  position: relative;
+  height: clamp(80px,15vh,120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* THIS adds space between buttons */
+}
+
 #noBtn { position:absolute; background:#ccc; }
 #yesBtn {
   animation: pulse 1.6s infinite;
@@ -176,6 +197,7 @@ button:active { transform: scale(0.92); }
   0% { text-shadow: 0 0 5px #fff; }
   100% { text-shadow: 0 0 20px #ff4d88; }
 }
+
 
 
 
