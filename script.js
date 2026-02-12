@@ -177,69 +177,79 @@ passwordInput.addEventListener("keydown", e => {
   }
 
   /* ---------- MINI-GAME ---------- */
-  const gameArea = document.getElementById("gameArea");
-  const scoreText = document.getElementById("scoreText");
-  let score = 0;
+const gameArea = document.getElementById("gameArea");
+const scoreText = document.getElementById("scoreText");
+let score = 0;
 
-  function startMiniGame(){
-    if(!gameArea || !scoreText) return;
-    gameArea.innerHTML = "";
-    score = 0;
-    scoreText.innerText = "Score: 0";
-    let hearts = [];
-    let gameOver = false;
+function startMiniGame(){
+  if(!gameArea || !scoreText) return;
+  gameArea.innerHTML = "";
+  score = 0;
+  scoreText.innerText = "Score: 0";
+  let hearts = [];
+  let gameOver = false;
 
-    function spawnHeart(){
-      if(gameOver) return;
-      const heart = document.createElement("div");
-      heart.className = "tap-emoji";
-      heart.innerText = Math.random() > 0.5 ? "💗" : "🧸";
-      const maxLeft = window.innerWidth - 30;
-      heart.style.left = Math.random() * maxLeft + "px";
-      heart.style.top = "-40px";
-      heart.style.pointerEvents = "auto";
-      document.body.appendChild(heart);
-      hearts.push(heart);
+  function spawnHeart(){
+    if(gameOver) return;
 
-      const drift = (Math.random() - 0.5) * 1.5;
+    const heart = document.createElement("div");
+    heart.className = "tap-emoji";
+    heart.innerText = Math.random() > 0.5 ? "💗" : "🧸";
 
-      function animate(){
-        let top = parseFloat(heart.style.top);
-        let left = parseFloat(heart.style.left);
-        top += 3;
-        left += drift;
-        heart.style.top = top + "px";
-        heart.style.left = left + "px";
-        if(top > window.innerHeight){
-          heart.remove();
-          hearts = hearts.filter(h => h !== heart);
-          return;
-        }
-        requestAnimationFrame(animate);
-      }
-      animate();
+    // get gameArea size
+    const gameRect = gameArea.getBoundingClientRect();
+    const maxLeft = gameRect.width - 30;
 
-      function tapped(){
-        if(gameOver) return;
-        score++;
-        scoreText.innerText = "Score: " + score;
-        heart.style.transform = "scale(1.5)";
-        playPop();
-        setTimeout(() => heart.remove(), 200);
+    heart.style.position = "absolute";
+    heart.style.left = Math.random() * maxLeft + "px";
+    heart.style.top = "-40px";
+    heart.style.pointerEvents = "auto";
+
+    gameArea.appendChild(heart);
+    hearts.push(heart);
+
+    const drift = (Math.random() - 0.5) * 1.5;
+
+    function animate(){
+      let top = parseFloat(heart.style.top);
+      let left = parseFloat(heart.style.left);
+      top += 4; // slower on mobile
+      left += drift;
+      heart.style.top = top + "px";
+      heart.style.left = left + "px";
+
+      // remove when it goes past bottom of gameArea
+      if(top > gameRect.height){
+        heart.remove();
         hearts = hearts.filter(h => h !== heart);
-        if(score >= 8){
-          gameOver = true;
-          hearts.forEach(h => h.remove());
-          setTimeout(nextScreen, 900);
-        }
+        return;
       }
-      heart.addEventListener("click", tapped);
-      heart.addEventListener("touchstart", tapped);
-    }
 
-    const spawnInterval = setInterval(spawnHeart, 700);
-    for(let i=0; i<4; i++) setTimeout(spawnHeart, i*350);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    function tapped(){
+      if(gameOver) return;
+      score++;
+      scoreText.innerText = "Score: " + score;
+      heart.style.transform = "scale(1.5)";
+      playPop();
+      setTimeout(() => heart.remove(), 200);
+      hearts = hearts.filter(h => h !== heart);
+      if(score >= 8){
+        gameOver = true;
+        hearts.forEach(h => h.remove());
+        setTimeout(nextScreen, 900);
+      }
+    }
+    heart.addEventListener("click", tapped);
+    heart.addEventListener("touchstart", tapped);
   }
+
+  const spawnInterval = setInterval(spawnHeart, 700);
+  for(let i=0; i<4; i++) setTimeout(spawnHeart, i*350);
+}
 
  /* ---------- VALENTINE ---------- */
 const yesBtn = document.getElementById("yesBtn");
