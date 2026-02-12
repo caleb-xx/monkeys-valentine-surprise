@@ -213,7 +213,7 @@ function startMiniGame(){
     function animate(){
       let top = parseFloat(heart.style.top);
       let left = parseFloat(heart.style.left);
-      top += 4; // slower on mobile
+      top += 6; // slower on mobile
       left += drift;
       heart.style.top = top + "px";
       heart.style.left = left + "px";
@@ -391,3 +391,4 @@ function sayYes() {
   });
 
 });
+
