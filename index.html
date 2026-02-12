@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Clara 💕</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<audio id="bgMusic" loop src="her-every-kind-of-way.mp3"></audio>
+
+<!-- SCREEN 1: Intro + Password -->
+<section class="screen active">
+  <h1 id="introText"></h1>
+
+  <div id="passwordBox" style="display:none;">
+    <input id="passwordInput" type="text" placeholder="Type here… 💭">
+<p id="passwordHint" class="password-hint">
+  Hint: the day my heart went ‘yep, she’s perfect’ 🥰💗
+</p>
+<p id="passwordMsg"></p>
+  </div>
+
+  <button class="btn" id="continueBtn" style="display:none;">Continue 💖</button>
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen">
+  <h2>Match the cards 💌</h2>
+  <div class="card-grid" id="gameBoard"></div>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen">
+  <h2>Reasons why I love you 💗</h2>
+  <div id="reasons"></div>
+</section>
+
+<!-- SCREEN 4 -->
+<section class="screen">
+  <h2>Catch the falling hearts! 💕</h2>
+  <p>Tap as many as you can ❤️</p>
+  <div id="gameArea"></div>
+  <p id="scoreText">Score: 0</p>
+</section>
+
+<!-- SCREEN 5 -->
+<section class="screen">
+  <h2>Otiniti🤭, will you be my Valentine?🙈💘</h2>
+  <div class="buttons">
+    <button id="yesBtn">Yeahh 💖</button>
+    <button id="noBtn">NO 🙈</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
