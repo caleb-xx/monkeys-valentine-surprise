@@ -1,5 +1,5 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { margin:0; font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg,#ffd6e8,#f3d9ff); text-align:center; overflow-x:hidden; }
+body { margin:0; font-family: 'Quicksand', sans-serif; background: #ffe6f0; /* soft pink */ text-align:center; overflow-x:hidden; }
 
 h1,h2 { font-family:'Dancing Script', cursive; color:#5a2a5f; line-height:1.2; }
 
@@ -176,3 +176,4 @@ button:active { transform: scale(0.92); }
   0% { text-shadow: 0 0 5px #fff; }
   100% { text-shadow: 0 0 20px #ff4d88; }
 }
+
