@@ -300,19 +300,20 @@ function sayYes() {
     <div class="final-content">
       <h1>YAYYYY 🥹💖</h1>
       <p>You just made me the happiest person alive Clara😭💕.</p>
-      <p>Happy Valentine’s Day, Monkey 🧸</p>
+      <div id="typedLetter"></div>
     </div>
   `;
 
   document.body.appendChild(finalScreen);
 
-  // trigger animation
   setTimeout(() => {
     finalScreen.classList.add("show");
   }, 50);
 
   launchConfetti(40);
   createFloatingHearts();
+
+  startLetterTyping(); // 👈 start typing after YES
 }
 
   /* ---------- FLOATING HEARTS ---------- */
@@ -392,3 +393,63 @@ function sayYes() {
 
 });
 
+/* ---------- LOVE LETTER TYPING ---------- */
+
+function startLetterTyping() {
+
+  const letter = `Hey my sweet beautiful princess angel queen mother 💘🥺
+
+Happy Valentine’s Day, mami ❤️!
+
+I wish I could be there to hug you, kiss you, and steal a little bite of your cupcake 😏, but since I can’t, I made you a little something to show you how much I’m thinking about you—cake, cupcakes, and this website, all just for you 🥰.
+
+You’re my peace, my happiness, my safest place… my everything. Even from afar, just thinking about you makes my heart smile. I love everything about you, your smile, your laugh, your calmness, your strength… the way you make me feel like the luckiest person alive without even trying.
+
+This Valentine’s is ours, my love. And even though I’m not there in person, I hope every bite, every page, every little thing I planned for you reminds you of how much I adore you 🥺🍰❤️.
+
+You’re special, you’re perfect, and you’re mine. And no matter what, I’ll always do my best to make you happy, make you feel loved, and make you smile.
+
+I love you endlessly, Monkey 💘. Always have, always will.
+
+Love,
+Caleb`;
+
+  const element = document.getElementById("typedLetter");
+  let index = 0;
+
+  function type() {
+    if (index < letter.length) {
+
+      const char = letter[index];
+
+      // Only ONE line break now (not double)
+      element.innerHTML += char === "\n" ? "<br>" : char;
+
+      // ✅ auto scroll as it types
+      element.scrollIntoView({ behavior: "smooth", block: "end" });
+
+      index++;
+
+      // Smooth consistent typing speed
+      setTimeout(type, 40);
+
+      // Random sparkle sometimes (not every sentence)
+      if (Math.random() < 0.02) {
+        sparkle();
+      }
+    }
+  }
+
+  type();
+}
+
+/* ✨ Sparkle Hearts Between Sentences */
+function sparkle() {
+  const heart = document.createElement("div");
+  heart.className = "sparkle-heart";
+  heart.innerText = Math.random() > 0.5 ? "💘" : "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = Math.random() * 80 + "vh";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1500);
+}
