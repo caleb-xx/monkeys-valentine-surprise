@@ -397,11 +397,11 @@ function sayYes() {
 
 function startLetterTyping() {
 
-  const letter = `Hey my sweet beautiful princess angel queen mother 💘🥺
+  const letter = `Hey my sweet beautiful princess angel queen mother 💘🥺 (I'll never forget this name 😂💕)
 
 Happy Valentine’s Day, mami ❤️!
 
-I wish I could be there to hug you, kiss you, and steal a little bite of your cupcake 😏, but since I can’t, I made you a little something to show you how much I’m thinking about you—cake, cupcakes, and this website, all just for you 🥰.
+I wish I could be there to hug you, kiss you, and steal a little bite of your cupcake 😏, but since I can’t, I made you a little something to show you how much I’m thinking about you—cake, cupcakes, and this website, all just for you 🥰. Just for being so sweet and effortlessly cute 😫.
 
 You’re my peace, my happiness, my safest place… my everything. Even from afar, just thinking about you makes my heart smile. I love everything about you, your smile, your laugh, your calmness, your strength… the way you make me feel like the luckiest person alive without even trying.
 
@@ -453,3 +453,4 @@ function sparkle() {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 1500);
 }
+
